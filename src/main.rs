@@ -1,8 +1,8 @@
 mod another_file;
 mod do_match;
+mod web_server;
 mod using_thread_pool;
 use std::io;
-use std::time::Duration;
 use std::thread;
 /*@author 坂島悠太(DOTPIANO_DEV)
 学習したことを追記していく*/
@@ -21,6 +21,7 @@ fn main() {
     let input_text_handle=thread::spawn(move || {text_input()});
     using_thread_pool::init();
     do_match::init();
-    input_text_handle.join();
-       
+    
+    web_server::start();
+    input_text_handle.join().expect("Thread join failed");
 }
