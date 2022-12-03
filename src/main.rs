@@ -2,6 +2,7 @@ mod lv1_another_file;
 mod lv1_do_match;
 mod lv3_web_server;
 mod lv2_using_thread_pool;
+pub mod lv2_handle_con;
 use std::io;
 use std::thread;
 /*@author 坂島悠太(DOTPIANO_DEV)
@@ -20,7 +21,7 @@ fn main() {
     /*This section does not use a thread pool so if this process is in loop this will overflow some day.*/
     let input_text_handle=thread::spawn(move || {text_input()});
     lv2_using_thread_pool::init();
-    lv2_do_match::init();
+    lv1_do_match::init();
     
     lv3_web_server::start();
     input_text_handle.join().expect("Thread join failed");
